@@ -1,18 +1,31 @@
 export const state = () => ({
-  curiosity: [],
+  curiosity: {
+    manifest: {},
+    images: [],
+  },
+  opportunity: {
+    manifest: {},
+    images: [],
+  },
+  spirit: {
+    manifest: {},
+    images: [],
+  },
 })
 
 export const actions = {
-  async getPhotos({ commit }) {
-    const { photos } = await this.$axios.$get(
-      `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=1&api_key=${process.env.NASA_API_KEY}`
+  async getImages({ commit }, { rover }) {
+    const { photos: images } = await this.$axios.$get(
+      `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=1000&page=1&api_key=${process.env.NASA_API_KEY}`
     )
-    commit('setPhotos', photos)
+    commit('setImages', { rover, images })
   },
 }
 
 export const mutations = {
-  setPhotos(state, photos) {
-    this.state.curiosity = photos
+  setImages(state, { rover, images }) {
+    if (rover === 'curiosity') state.curiosity.images = images
+    if (rover === 'spirit') state.spirit.images = images
+    if (rover === 'opportunity') state.opportunity.images = images
   },
 }

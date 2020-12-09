@@ -1,48 +1,25 @@
 <template>
-  <div class="container">
-    <div>
-      <h1 class="title text-red-500">the-red-world</h1>
-      <pre>
-        {{ photos }}
-      </pre>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
-  </div>
+  <Home />
 </template>
 
 <script>
 import { mapActions } from 'vuex'
+import Home from '~/components/Home'
 
 export default {
+  components: {
+    Home,
+  },
   computed: {
     photos() {
       return this.$store.state.curiosity
     },
   },
   created() {
-    this.$store.dispatch('getPhotos')
+    this.$store.dispatch('getImages', { rover: 'curiosity' })
   },
   methods: {
-    ...mapActions(['getPhotos']),
+    ...mapActions(['getImages']),
   },
 }
 </script>
-
-<style></style>
