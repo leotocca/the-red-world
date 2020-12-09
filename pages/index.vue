@@ -2,6 +2,9 @@
   <div class="container">
     <div>
       <h1 class="title text-red-500">the-red-world</h1>
+      <pre>
+        {{ photos }}
+      </pre>
       <div class="links">
         <a
           href="https://nuxtjs.org/"
@@ -25,7 +28,21 @@
 </template>
 
 <script>
-export default {}
+import { mapActions } from 'vuex'
+
+export default {
+  computed: {
+    photos() {
+      return this.$store.state.curiosity
+    },
+  },
+  created() {
+    this.$store.dispatch('getPhotos')
+  },
+  methods: {
+    ...mapActions(['getPhotos']),
+  },
+}
 </script>
 
 <style></style>
