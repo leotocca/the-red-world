@@ -1,13 +1,13 @@
 <template>
   <header
-    class="w-full h-12 bg-gray-100 border-b border-gray-200 flex items-center shadow"
+    class="fixed top-0 w-full h-12 bg-gray-100 border-b border-gray-200 flex items-center shadow"
   >
-    <div class="flex-grow ml-16">
+    <div class="flex-grow ml-10 md:ml-16">
       <NuxtLink to="/" class="text-gray-800 font-semibold text-xl"
         >The red world</NuxtLink
       >
     </div>
-    <div class="mr-16">
+    <div class="mr-16 hidden md:block">
       <NuxtLink to="/curiosity" class="text-gray-800 text-lg mx-5"
         >Curiosity</NuxtLink
       >
