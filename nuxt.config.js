@@ -1,6 +1,11 @@
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
+  publicRuntimeConfig: {
+    // The API_KEY should go on a .env file and then imported through process.env to the
+    // privateRuntimeConfig but was placed here to make the testing of the demo easier
+    API_KEY: 'XFnJJh26Jh5CTdnYINp5SojTu3tGzhij1IMc7srY',
+  },
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
