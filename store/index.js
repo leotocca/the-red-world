@@ -7,7 +7,7 @@ export const state = () => ({
 export const actions = {
   async getImages({ commit }, { rover }) {
     const { photos: images } = await this.$axios.$get(
-      `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=100&page=1&api_key=${process.env.NASA_API_KEY}`
+      `/api/v1/rovers/${rover}/photos?sol=100&page=1&api_key=${process.env.NASA_API_KEY}`
     )
     commit('setImages', { rover, images })
   },
